@@ -3,7 +3,7 @@ from scipy.stats import norm
 import pandas as pd
 
 class VarCov:
-    """Uses the variance / covariance method and the linearized loss operator."""
+    """Uses the variance / covariance method and the linearized loss operator to calculate the Value at risk and the Expected Shortfall."""
 
     def __init__(self):
         self.mu_hat = 0
