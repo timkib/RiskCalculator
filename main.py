@@ -24,16 +24,3 @@ class VarCov:
         ES = -w.T @ self.mu_hat + np.sqrt(w.T @ self.cov_hat @ w) * norm.pdf(norm.ppf(alpha))/(1 - alpha)
         return VaR.item(0), ES.item(0)
 
-bmw = np.diff(np.log(np.flip(pd.read_csv("BMW.csv", delimiter=";")["Schlusskurs"].values)))
-vw = np.diff(np.log(np.flip(pd.read_csv("Volkswagen.csv", delimiter=";")["Schlusskurs"].values)))
-continental = np.diff(np.log(np.flip(pd.read_csv("Continental.csv", delimiter=";")["Schlusskurs"].values)))
-data = np.array([bmw, vw, continental]).T
-
-w = np.array([[90, 70, 50]]).reshape(3, 1)
-
-print(w)
-
-varcov = VarCov()
-VaR, ES = varcov.fit(data, w, 0.99)
-print(VaR)
-print(ES)
